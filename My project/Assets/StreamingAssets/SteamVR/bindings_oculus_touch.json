@@ -270,7 +270,7 @@
    "controller_type" : "oculus_touch",
    "description" : "",
    "interaction_profile" : "",
-   "name" : "Senior Project",
+   "name" : "oculus_touch",
    "options" : {},
    "simulated_actions" : []
 }
