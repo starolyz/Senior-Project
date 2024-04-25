@@ -6772,6 +6772,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1022868652303664206, guid: 0e9cc8605a1a04a6194734d1990db42a, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1193640454563697316, guid: 0e9cc8605a1a04a6194734d1990db42a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.077
@@ -7644,6 +7648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hold 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8135324883560399095, guid: 42dd762056f694ed48fe33cc55a4d9ae, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7686,6 +7694,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3737010185743983594, guid: bc6aff02c61fe42a78dd8260792353bd, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3741507036108469871, guid: bc6aff02c61fe42a78dd8260792353bd, type: 3}
       propertyPath: m_Name
       value: Hold 4
@@ -8607,6 +8619,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1780849562299655188, guid: 0d2b6d935aae842518e7d1258533e6ac, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6122076765590818999, guid: 0d2b6d935aae842518e7d1258533e6ac, type: 3}
       propertyPath: m_Name
       value: Hold 2
@@ -8834,6 +8850,10 @@ PrefabInstance:
     - target: {fileID: 2303684692703160673, guid: d29eb69ae125640398586cca676ba299, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826592986807164064, guid: d29eb69ae125640398586cca676ba299, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9652,6 +9672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carry 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8740336645556790933, guid: 4863584ac94fb4806ac79ff26eeeee05, type: 3}
+      propertyPath: m_AngularDrag
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9917,6 +9941,10 @@ PrefabInstance:
     - target: {fileID: 737870286196710932, guid: 4a28be70c224a44e9bf7fe64fcc1f13f, type: 3}
       propertyPath: m_Name
       value: Carry 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773334925897761513, guid: 4a28be70c224a44e9bf7fe64fcc1f13f, type: 3}
+      propertyPath: m_AngularDrag
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
