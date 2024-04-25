@@ -6,53 +6,73 @@ using UnityEngine.EventSystems;
 public class Pointer : MonoBehaviour
 {
     public float m_DefaultLength = 5.0f;
-    public GameObject m_Dot;
-    public VRInputModule m_InputModule;
 
-    private LineRenderer m_LineRenderer = null;
+    public EventSystem eventSystem = null;
+    public VRInputModule inputModule = null;
+
+    private LineRenderer lineRenderer = null;
 
     private void Awake()
     {
-        m_LineRenderer = GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     private void Update()
     {
-        UpdateLine();
+        UpdateLength();
     }
 
-    private void UpdateLine()
+    private void UpdateLength()
     {
-        //Use default or distance
-        PointerEventData data = m_InputModule.GetData();
-        float targetLength = data.pointerCurrentRaycast.distance == 0 ? m_DefaultLength : data.pointerCurrentRaycast.distance;
-
-        //Raycast
-        RaycastHit hit = CreateRaycast(targetLength);
-
-        //Default
-        Vector3 endPosition = transform.position + (transform.forward * targetLength);
-
-        //Or based on hit
-        if (hit.collider != null)
-            endPosition = hit.point;
-
-        //Set position of the dot
-        m_Dot.transform.position = endPosition;
-
-        //Set linerenderer
-        m_LineRenderer.SetPosition(0, transform.position);
-        m_LineRenderer.SetPosition(1, endPosition);
-
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, GetEnd());
     }
 
-    private RaycastHit CreateRaycast(float length)
+    private Vector3 GetEnd()
     {
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.forward);
-        Physics.Raycast(ray, out hit, m_DefaultLength);
+        float distance = GetCanvasDistance();
+        Vector3 endPosition = CalculateEnd(m_DefaultLength);
 
-        return hit;
+        if (distance != 0.0f)
+            endPosition = CalculateEnd(distance);
 
+        return endPosition;
+    }
+
+    private float GetCanvasDistance()
+    {
+        //Get Data
+        PointerEventData eventData = new PointerEventData(eventSystem);
+        eventData.position = inputModule.inputOverride.mousePosition;
+
+        //Raycast using data
+        List<RaycastResult> results = new List<RaycastResult>();
+        eventSystem.RaycastAll(eventData, results);
+
+        //Get closet
+        RaycastResult closetResult = FindFirstRaycast(results);
+        float distance = closetResult.distance;
+
+        //Clamp
+        distance = Mathf.Clamp(distance, 0.0f, m_DefaultLength);
+        return distance;
+    }
+
+    private RaycastResult FindFirstRaycast(List<RaycastResult> results)
+    {
+        foreach(RaycastResult result in results)
+        {
+            if (result.gameObject)
+                continue;
+
+            return result;
+        }
+
+        return new RaycastResult();
+    }
+
+    private Vector3 CalculateEnd(float length)
+    {
+        return transform.position + (transform.forward * length);
     }
 }
